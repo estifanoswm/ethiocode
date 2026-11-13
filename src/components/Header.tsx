@@ -7,7 +7,7 @@ import { TelegramButton } from "./TelegramButton";
 export function Logo({ locale }: { locale: Locale }) {
   return (
     <Link href={`/${locale}/`} className="flex items-center gap-2 font-bold tracking-tight text-ink">
-      <span className="grid h-8 w-8 place-items-center rounded-lg bg-forest text-xs text-white">251</span>
+      <span className="grid h-8 w-8 place-items-center rounded-lg bg-forest text-xs text-white">{site.shortName}</span>
       <span className="whitespace-nowrap text-lg">{site.name}</span>
     </Link>
   );

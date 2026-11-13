@@ -1,10 +1,10 @@
 export const site = {
-  name: "Studio 251",
-  shortName: "S251",
-  telegramHandle: "studio251",
+  name: "EthioCode",
+  shortName: "EC",
+  telegramHandle: "ethiocode",
   phone: "+251 900 000 000",
   whatsapp: "251900000000",
-  email: "hello@studio251.example",
+  email: "hello@ethiocode.example",
   city: "Addis Ababa",
   founders: [
     { name: "Estifanos", initials: "E" },

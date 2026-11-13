@@ -1,6 +1,6 @@
-# Studio 251 website
+# EthioCode website
 
-Bilingual (English and Amharic) portfolio site for our software studio. "Studio 251" is a working name until branding is done.
+Bilingual (English and Amharic) portfolio site for our software studio. "EthioCode" is a working name until branding is done.
 
 ## Where things live
 

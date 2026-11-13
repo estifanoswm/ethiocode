@@ -1,6 +1,6 @@
 export const en = {
   meta: {
-    title: "Studio 251 | Online stores and software for Ethiopian businesses",
+    title: "EthioCode | Online stores and software for Ethiopian businesses",
     description:
       "Mobile-first online stores and business systems with telebirr and Chapa payments, in Amharic and English. Fixed prices, Ethiopia hosting, ongoing support.",
   },
@@ -51,7 +51,7 @@ export const en = {
     ],
     foundersTitle: "Who we are",
     foundersBody:
-      "We are a brother and sister team of software professionals trained in Canada, with family and roots in Addis Ababa. We started Studio 251 to give Ethiopian businesses the same quality of software we work with every day.",
+      "We are a brother and sister team of software professionals trained in Canada, with family and roots in Addis Ababa. We started EthioCode to give Ethiopian businesses the same quality of software we work with every day.",
     faqTitle: "Questions",
     faq: [
       { q: "How long does a project take?", a: "A business website takes about 2 to 3 weeks. An online store takes about 4 to 6 weeks. We give you a date in writing before we start." },
@@ -148,7 +148,7 @@ export const en = {
   about: {
     title: "About us",
     story: [
-      "Studio 251 is a software studio founded by a brother and sister who grew up between Addis Ababa and Canada.",
+      "EthioCode is a software studio founded by a brother and sister who grew up between Addis Ababa and Canada.",
       "We trained and work as software professionals in Canada, building systems for large organizations. We saw that many Ethiopian businesses still run on paper, phone calls and Telegram messages, and that the software available to them is often slow, hard to update and abandoned after launch.",
       "We want to change that: modern, fast software in Amharic and English, with local payments, fair fixed prices, and support that continues after launch.",
     ],

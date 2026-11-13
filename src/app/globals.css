@@ -1,26 +1,48 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource/noto-sans-ethiopic/ethiopic-400.css";
+@import "@fontsource/noto-sans-ethiopic/ethiopic-600.css";
+@import "@fontsource/noto-sans-ethiopic/ethiopic-700.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-ink: #13201a;
+  --color-muted: #55635b;
+  --color-cream: #f8f5ef;
+  --color-sand: #efe8dc;
+  --color-line: #e2dacb;
+  --color-forest: #14532d;
+  --color-forest-dark: #0d3b20;
+  --color-leaf: #2f7d4f;
+  --color-gold: #c98a1b;
+  --color-telegram: #229ed9;
+  --font-sans: "Inter Variable", "Noto Sans Ethiopic", ui-sans-serif, system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+html[lang="am"] body {
+  font-family: "Noto Sans Ethiopic", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+html[lang="am"] h1,
+html[lang="am"] h2,
+html[lang="am"] h3 {
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: white;
 }

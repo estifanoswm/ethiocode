@@ -299,12 +299,12 @@ const T = {
     allProducts: "All products",
     search: "Search iPhone, PS5, mic…",
     updated: "Prices from HEY Online Market's Telegram channel, November 2026. Final price confirmed on Telegram.",
-    cats: { all: "All", phones: "Phones", gaming: "Gaming", creator: "Creator gear", soon: "Coming soon" },
+    cats: { all: "All", phones: "Phones", gaming: "Gaming", creator: "Creator gear" },
     new: "Brand new",
-    soon: "Release pending",
+    soon: "New arrival",
     priceOnRequest: "Ask for price",
     order: "Order on Telegram",
-    notify: "Get notified",
+    notify: "Ask on Telegram",
     empty: "No products match your search.",
     copied: "Order message copied. Paste it in the Telegram chat.",
     whyTitle: "Why buy from HEY",
@@ -342,12 +342,12 @@ const T = {
     allProducts: "ሁሉም ምርቶች",
     search: "iPhone፣ PS5፣ ማይክ ይፈልጉ…",
     updated: "ዋጋዎቹ ከHEY Online Market የቴሌግራም ቻናል የተወሰዱ ናቸው (ኅዳር 2019)። የመጨረሻ ዋጋ በቴሌግራም ይረጋገጣል።",
-    cats: { all: "ሁሉም", phones: "ስልኮች", gaming: "ጌሚንግ", creator: "የይዘት ፈጣሪ እቃዎች", soon: "በቅርቡ" },
+    cats: { all: "ሁሉም", phones: "ስልኮች", gaming: "ጌሚንግ", creator: "የይዘት ፈጣሪ እቃዎች" },
     new: "አዲስ",
-    soon: "ገና ያልወጣ",
+    soon: "አዲስ የገባ",
     priceOnRequest: "ዋጋ ይጠይቁ",
     order: "በቴሌግራም ይዘዙ",
-    notify: "ሲደርስ ያሳውቁኝ",
+    notify: "በቴሌግራም ይጠይቁ",
     empty: "የሚመሳሰል ምርት አልተገኘም።",
     copied: "የትዕዛዝ መልዕክቱ ተቀድቷል። በቴሌግራም ውይይቱ ውስጥ ይለጥፉት።",
     whyTitle: "ለምን ከHEY ይግዙ",
@@ -374,8 +374,8 @@ const PRODUCTS = [
   { id: "ps5p", cat: "gaming", art: "console", name: "PlayStation 5 Pro", opts: [["Disc", 299000], ["Digital", 269000]] },
   { id: "lark", cat: "creator", art: "mic", name: "Hollyland LARK M2", opts: [["Kit", 34000]] },
   { id: "djim", cat: "creator", art: "mic", name: "DJI Mic Mini", opts: [["Kit", 31000]] },
-  { id: "ip18pm", cat: "soon", art: "phone", name: "iPhone 18 Pro Max", soon: true, opts: [] },
-  { id: "ip18p", cat: "soon", art: "phone", name: "iPhone 18 Pro", soon: true, opts: [] }
+  { id: "ip18pm", cat: "phones", art: "phone", name: "iPhone 18 Pro Max", ask: true, opts: [] },
+  { id: "ip18p", cat: "phones", art: "phone", name: "iPhone 18 Pro", ask: true, opts: [] }
 ];
 
 const CONTACTS = [
@@ -411,11 +411,11 @@ function loadPhotos() {
 }
 
 function priceLabel(p) {
-  return p.soon ? t("priceOnRequest") : `${fmt(p.opts[choice[p.id] || 0][1])} ${t("from")}`;
+  return p.ask ? t("priceOnRequest") : `${fmt(p.opts[choice[p.id] || 0][1])} ${t("from")}`;
 }
 
 function orderText(p) {
-  if (p.soon) return `Hi HEY Market, please notify me when the ${p.name} arrives.`;
+  if (p.ask) return `Hi HEY Market, what is your price for the ${p.name}? Which colors and storage do you have?`;
   const o = p.opts[choice[p.id] || 0];
   return `Hi HEY Market, I want to order: ${p.name} ${o[0]} (${fmt(o[1])} ETB). Is it available?`;
 }
@@ -441,11 +441,11 @@ function optsHtml(p, i) {
 
 function cardInner(p) {
   const i = choice[p.id] || 0;
-  const price = p.soon ? `<div class="price"><small>${t("priceOnRequest")}</small></div>` : `<div class="price">${fmt(p.opts[i][1])} <small>${t("from")}</small></div>`;
+  const price = p.ask ? `<div class="price"><small>${t("priceOnRequest")}</small></div>` : `<div class="price">${fmt(p.opts[i][1])} <small>${t("from")}</small></div>`;
   return `<div class="art">${artHtml(p)}</div>
-    <div class="badges"><span class="b${p.soon ? " soon" : ""}">${p.soon ? t("soon") : t("new")}</span></div>
+    <div class="badges"><span class="b${p.ask ? " soon" : ""}">${p.ask ? t("soon") : t("new")}</span></div>
     <h3>${p.name}</h3>${optsHtml(p, i)}${price}
-    <button type="button" class="tg order" data-order="${p.id}">${p.soon ? t("notify") : t("order")}</button>`;
+    <button type="button" class="tg order" data-order="${p.id}">${p.ask ? t("notify") : t("order")}</button>`;
 }
 
 let sheetId = null;

@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0b0f">
+<title>HEY Market | Website concept by EthioCode</title>
+<style>
+:root{--ink:#0b0b0f;--soft:#f4f4f6;--line:#e6e6ea;--muted:#6b6b76;--accent:#ff3b30;--tg:#229ed9;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,"Noto Sans Ethiopic",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+html[lang=am] body{line-height:1.7}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+.concept{background:#fff7d6;color:#5b4500;font-size:13px;text-align:center;padding:8px 14px}
+.concept b{font-weight:700}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px;letter-spacing:-.02em}
+.logo span{background:var(--accent);color:#fff;border-radius:10px;padding:3px 9px;font-size:16px}
+.actions{display:flex;gap:8px;align-items:center}
+.pill{border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;font-weight:600}
+.tg{display:inline-flex;align-items:center;gap:8px;background:var(--tg);color:#fff;border-radius:999px;padding:9px 16px;font-weight:700;font-size:14px}
+.tg svg{width:18px;height:18px;fill:currentColor}
+.hero{background:var(--ink);color:#fff;overflow:hidden;position:relative}
+.hero .wrap{display:grid;gap:28px;padding-top:46px;padding-bottom:46px}
+.tag{display:inline-block;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;letter-spacing:.04em}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.05;letter-spacing:-.03em;margin-top:14px;max-width:720px}
+html[lang=am] .hero h1{line-height:1.3;letter-spacing:0}
+.hero p{color:#c9c9d1;font-size:18px;margin-top:14px;max-width:560px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.ghost{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:9px 16px;font-weight:700;font-size:14px}
+.stats{display:flex;flex-wrap:wrap;gap:22px;margin-top:28px;color:#c9c9d1;font-size:14px}
+.stats b{display:block;color:#fff;font-size:22px}
+.glow{pointer-events:none;position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,59,48,.45),transparent 65%)}
+.tools{display:flex;flex-direction:column;gap:12px;padding:22px 0 8px}
+.search{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 15px;font:inherit;font-size:16px;background:var(--soft);outline:none}
+.search:focus{border-color:var(--ink);background:#fff}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.updated{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:12px;padding:12px 0 40px}
+.card{border:1px solid var(--line);border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.art{background:var(--soft);border-radius:14px;height:120px;display:grid;place-items:center}
+.art svg{height:90px}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.b{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:6px;padding:3px 7px;background:#eafaf0;color:var(--ok)}
+.b.soon{background:#fff1f0;color:var(--accent)}
+.card h3{font-size:17px;letter-spacing:-.01em}
+.opts{display:flex;gap:6px;flex-wrap:wrap}
+.opt{border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:13px;font-weight:600}
+.opt.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.price{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-top:auto}
+.price small{font-size:13px;color:var(--muted);font-weight:600}
+.order{justify-content:center;width:100%}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0}
+section.alt{background:var(--soft)}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;padding:44px 0}
+.why div{background:#fff;border-radius:18px;padding:20px;border:1px solid var(--line)}
+.why h4{font-size:16px}
+.why p{color:var(--muted);font-size:14px;margin-top:6px}
+.h2{font-size:clamp(24px,4vw,34px);letter-spacing:-.02em;padding-top:44px}
+.visit{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));padding:20px 0 50px}
+.box{border:1px solid var(--line);border-radius:20px;padding:22px}
+.box p{color:var(--muted);margin-top:6px}
+.box a.link{display:inline-block;margin-top:12px;font-weight:700;color:var(--tg)}
+.contacts{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.contacts a{display:flex;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-weight:600}
+.contacts span{color:var(--muted);font-weight:500}
+footer{background:var(--ink);color:#c9c9d1;font-size:13px;padding:26px 0 90px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+footer b{color:#fff}
+.float{position:fixed;right:16px;bottom:16px;z-index:30;width:58px;height:58px;border-radius:50%;background:var(--tg);display:grid;place-items:center;box-shadow:0 10px 30px rgba(34,158,217,.45)}
+.float svg{width:28px;height:28px;fill:#fff}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw;text-align:center}
+.toast.show{opacity:1}
+@media(min-width:760px){.grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}.card{padding:16px}.art{height:150px}.art svg{height:110px}.tools{flex-direction:row;align-items:center}.search{max-width:340px}.float{display:none}footer{padding-bottom:26px}}
+</style>
+</head>
+<body>
+<div class="concept" data-t="concept"></div>
+<header>
+  <div class="wrap bar">
+    <a href="#" class="logo">HEY <span>Market</span></a>
+    <div class="actions">
+      <button class="pill" id="lang" type="button"></button>
+      <a class="tg" id="tgHead" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.94 4.3 18.7 19.6c-.24 1.08-.88 1.35-1.78.84l-4.93-3.63-2.38 2.29c-.26.26-.48.48-.99.48l.35-5.02 9.14-8.26c.4-.35-.09-.55-.62-.2L6.2 13.2 1.33 11.68c-1.06-.33-1.08-1.06.22-1.57L20.6 2.77c.88-.32 1.65.21 1.34 1.53Z"/></svg><span data-t="tgShort"></span></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div>
+      <span class="tag">#ORIGINALONLY</span>
+      <h1 data-t="heroTitle"></h1>
+      <p data-t="heroSub"></p>
+      <div class="ctas">
+        <a class="tg" id="tgHero" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.94 4.3 18.7 19.6c-.24 1.08-.88 1.35-1.78.84l-4.93-3.63-2.38 2.29c-.26.26-.48.48-.99.48l.35-5.02 9.14-8.26c.4-.35-.09-.55-.62-.2L6.2 13.2 1.33 11.68c-1.06-.33-1.08-1.06.22-1.57L20.6 2.77c.88-.32 1.65.21 1.34 1.53Z"/></svg><span data-t="tgLong"></span></a>
+        <a class="ghost" href="#shop" data-t="browse"></a>
+      </div>
+      <div class="stats">
+        <div><b>16.6K</b><span data-t="statTg"></span></div>
+        <div><b>Bole</b><span data-t="statStore"></span></div>
+        <div><b>100%</b><span data-t="statOriginal"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap" id="shop">
+  <div class="tools">
+    <input class="search" id="q" type="search" autocomplete="off">
+    <div class="chips" id="chips"></div>
+  </div>
+  <p class="updated" data-t="updated"></p>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="h2" data-t="whyTitle"></h2>
+    <div class="why" id="why"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="h2" data-t="visitTitle"></h2>
+    <div class="visit">
+      <div class="box">
+        <h4 data-t="storeTitle"></h4>
+        <p data-t="storeAddr"></p>
+        <a class="link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Raxim%20Plaza%20Bole%20Medhanialem%20Addis%20Ababa" data-t="map"></a>
+      </div>
+      <div class="box">
+        <h4 data-t="contactTitle"></h4>
+        <div class="contacts" id="contacts"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© HEY Market · Addis Ababa</span>
+    <span data-t="footerConcept"></span>
+  </div>
+</footer>
+
+<a class="float" id="tgFloat" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.94 4.3 18.7 19.6c-.24 1.08-.88 1.35-1.78.84l-4.93-3.63-2.38 2.29c-.26.26-.48.48-.99.48l.35-5.02 9.14-8.26c.4-.35-.09-.55-.62-.2L6.2 13.2 1.33 11.68c-1.06-.33-1.08-1.06.22-1.57L20.6 2.77c.88-.32 1.65.21 1.34 1.53Z"/></svg></a>
+<div class="toast" id="toast"></div>
+
+<script>
+const TG = "heymobile";
+const TG_URL = "https://t.me/" + TG;
+
+const T = {
+  en: {
+    concept: "<b>Website concept</b> prepared for HEY Market by EthioCode. Not the official site.",
+    tgShort: "Telegram",
+    tgLong: "Order on Telegram",
+    heroTitle: "Original phones, gaming and creator gear in Addis.",
+    heroSub: "Live prices in birr, updated daily. Pick your model, then order in one tap on Telegram or visit our store in Bole Medhanialem.",
+    browse: "Browse products",
+    statTg: "Telegram subscribers",
+    statStore: "Store you can visit",
+    statOriginal: "Original only",
+    search: "Search iPhone, PS5, mic…",
+    updated: "Prices from HEY Online Market's Telegram channel, November 2026. Final price confirmed on Telegram.",
+    cats: { all: "All", phones: "Phones", gaming: "Gaming", creator: "Creator gear", soon: "Coming soon" },
+    new: "Brand new",
+    soon: "Release pending",
+    priceOnRequest: "Ask for price",
+    order: "Order on Telegram",
+    notify: "Get notified",
+    empty: "No products match your search.",
+    copied: "Order message copied. Paste it in the Telegram chat.",
+    whyTitle: "Why buy from HEY",
+    why: [
+      ["Original only", "Every device we sell is genuine. #ORIGINALONLY is our promise."],
+      ["Real store in Bole", "Come see your device in person at our shop in Bole Medhanialem."],
+      ["Prices updated daily", "The price you see here matches the shop, in birr."],
+      ["Order in one tap", "Chat with us on Telegram and reserve your device right away."]
+    ],
+    visitTitle: "Visit or contact us",
+    storeTitle: "Our store",
+    storeAddr: "Raxim Plaza, Ground Floor, Bole Medhanialem, Addis Ababa",
+    map: "Open in Google Maps →",
+    contactTitle: "Talk to us",
+    footerConcept: "Concept design by EthioCode",
+    from: "ETB"
+  },
+  am: {
+    concept: "ይህ ለHEY Market በEthioCode የተዘጋጀ <b>የድረ-ገጽ ናሙና</b> ነው። ኦፊሴላዊ ድረ-ገጽ አይደለም።",
+    tgShort: "ቴሌግራም",
+    tgLong: "በቴሌግራም ይዘዙ",
+    heroTitle: "ኦሪጅናል ስልኮች፣ ጌሚንግ እና የይዘት ፈጣሪ እቃዎች በአዲስ አበባ።",
+    heroSub: "በየቀኑ የሚታደሱ ዋጋዎች በብር። ሞዴልዎን ይምረጡ፣ በቴሌግራም በአንድ ንክኪ ይዘዙ ወይም ቦሌ መድኃኔዓለም የሚገኘውን ሱቃችንን ይጎብኙ።",
+    browse: "ምርቶችን ይመልከቱ",
+    statTg: "የቴሌግራም ተከታዮች",
+    statStore: "የሚጎበኝ ሱቅ",
+    statOriginal: "ኦሪጅናል ብቻ",
+    search: "iPhone፣ PS5፣ ማይክ ይፈልጉ…",
+    updated: "ዋጋዎቹ ከHEY Online Market የቴሌግራም ቻናል የተወሰዱ ናቸው (ኅዳር 2019)። የመጨረሻ ዋጋ በቴሌግራም ይረጋገጣል።",
+    cats: { all: "ሁሉም", phones: "ስልኮች", gaming: "ጌሚንግ", creator: "የይዘት ፈጣሪ እቃዎች", soon: "በቅርቡ" },
+    new: "አዲስ",
+    soon: "ገና ያልወጣ",
+    priceOnRequest: "ዋጋ ይጠይቁ",
+    order: "በቴሌግራም ይዘዙ",
+    notify: "ሲደርስ ያሳውቁኝ",
+    empty: "የሚመሳሰል ምርት አልተገኘም።",
+    copied: "የትዕዛዝ መልዕክቱ ተቀድቷል። በቴሌግራም ውይይቱ ውስጥ ይለጥፉት።",
+    whyTitle: "ለምን ከHEY ይግዙ",
+    why: [
+      ["ኦሪጅናል ብቻ", "የምንሸጠው እያንዳንዱ እቃ እውነተኛ ነው። #ORIGINALONLY ቃላችን ነው።"],
+      ["ቦሌ ያለ እውነተኛ ሱቅ", "ቦሌ መድኃኔዓለም ሱቃችን መጥተው እቃዎን በአካል ይመልከቱ።"],
+      ["በየቀኑ የሚታደስ ዋጋ", "እዚህ የሚያዩት ዋጋ በሱቁ ያለው ዋጋ ነው።"],
+      ["በአንድ ንክኪ ይዘዙ", "በቴሌግራም ያናግሩን፣ እቃዎን ወዲያውኑ ያስይዙ።"]
+    ],
+    visitTitle: "ይጎብኙን ወይም ያግኙን",
+    storeTitle: "ሱቃችን",
+    storeAddr: "ራክሲም ፕላዛ፣ ምድር ቤት፣ ቦሌ መድኃኔዓለም፣ አዲስ አበባ",
+    map: "በGoogle Maps ይክፈቱ →",
+    contactTitle: "ያናግሩን",
+    footerConcept: "ዲዛይን፦ EthioCode",
+    from: "ብር"
+  }
+};
+
+const PRODUCTS = [
+  { id: "ip17", cat: "phones", art: "phone", name: "iPhone 17", opts: [["256GB", 179000]] },
+  { id: "ip16", cat: "phones", art: "phone", name: "iPhone 16", opts: [["128GB", 144000], ["256GB", 155000]] },
+  { id: "ps5s", cat: "gaming", art: "console", name: "PlayStation 5 Slim", opts: [["Disc", 189000], ["Digital", 159000]] },
+  { id: "ps5p", cat: "gaming", art: "console", name: "PlayStation 5 Pro", opts: [["Disc", 299000], ["Digital", 269000]] },
+  { id: "lark", cat: "creator", art: "mic", name: "Hollyland LARK M2", opts: [["Kit", 34000]] },
+  { id: "djim", cat: "creator", art: "mic", name: "DJI Mic Mini", opts: [["Kit", 31000]] },
+  { id: "ip18pm", cat: "soon", art: "phone", name: "iPhone 18 Pro Max", soon: true, opts: [] },
+  { id: "ip18p", cat: "soon", art: "phone", name: "iPhone 18 Pro", soon: true, opts: [] }
+];
+
+const CONTACTS = [
+  ["@heymobile", "0953 964 175", "https://t.me/heymobile"],
+  ["@eBRO4", "0925 927 457", "https://t.me/eBRO4"],
+  ["Telegram channel", "@heyonlinemarket", "https://t.me/heyonlinemarket"]
+];
+
+const ART = {
+  phone: '<svg viewBox="0 0 60 110"><rect x="4" y="2" width="52" height="106" rx="12" fill="#1c1c22"/><rect x="8" y="6" width="44" height="98" rx="9" fill="#2e2e38"/><rect x="22" y="9" width="16" height="5" rx="2.5" fill="#0b0b0f"/><circle cx="16" cy="22" r="5" fill="#3d3d49"/><rect x="8" y="60" width="44" height="44" rx="0" fill="url(#g)"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3b30" stop-opacity=".35"/><stop offset="1" stop-color="#229ed9" stop-opacity=".35"/></linearGradient></defs></svg>',
+  console: '<svg viewBox="0 0 120 110"><path d="M38 6h22v98H38c-8 0-14-6-14-14V20c0-8 6-14 14-14z" fill="#f1f1f4" stroke="#d7d7de" stroke-width="2"/><rect x="58" y="10" width="14" height="90" rx="4" fill="#1c1c22"/><path d="M70 6h12c8 0 14 6 14 14v70c0 8-6 14-14 14H70z" fill="#f1f1f4" stroke="#d7d7de" stroke-width="2"/><rect x="62" y="40" width="6" height="2" rx="1" fill="#229ed9"/></svg>',
+  mic: '<svg viewBox="0 0 120 110"><rect x="18" y="22" width="34" height="46" rx="10" fill="#1c1c22"/><circle cx="35" cy="38" r="8" fill="#3d3d49"/><rect x="68" y="22" width="34" height="46" rx="10" fill="#1c1c22"/><circle cx="85" cy="38" r="8" fill="#3d3d49"/><rect x="30" y="78" width="60" height="22" rx="8" fill="#e5e5ea"/><rect x="40" y="86" width="40" height="6" rx="3" fill="#c7c7cf"/></svg>'
+};
+
+let lang = "en", cat = "all", query = "";
+const choice = {};
+const $ = (s) => document.querySelector(s);
+const fmt = (n) => n.toLocaleString("en-US");
+
+function t(k) { return T[lang][k]; }
+
+function orderText(p) {
+  const o = p.opts[choice[p.id] || 0];
+  if (p.soon) return `Hi HEY Market, please notify me when the ${p.name} arrives.`;
+  return `Hi HEY Market, I want to order: ${p.name} ${o[0]} (${fmt(o[1])} ETB). Is it available?`;
+}
+
+async function order(p) {
+  const text = orderText(p);
+  try { await navigator.clipboard.writeText(text); toast(t("copied")); } catch (e) {}
+  window.open(TG_URL, "_blank", "noopener");
+}
+
+function toast(msg) {
+  const el = $("#toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toast.h);
+  toast.h = setTimeout(() => el.classList.remove("show"), 2600);
+}
+
+function renderChips() {
+  $("#chips").innerHTML = Object.entries(t("cats"))
+    .map(([k, v]) => `<button type="button" class="chip${k === cat ? " on" : ""}" data-cat="${k}">${v}</button>`)
+    .join("");
+}
+
+function renderGrid() {
+  const q = query.trim().toLowerCase();
+  const list = PRODUCTS.filter((p) => (cat === "all" || p.cat === cat) && (!q || p.name.toLowerCase().includes(q)));
+  if (!list.length) { $("#grid").innerHTML = `<p class="empty">${t("empty")}</p>`; return; }
+  $("#grid").innerHTML = list.map((p) => {
+    const i = choice[p.id] || 0;
+    const opts = p.opts.length > 1
+      ? `<div class="opts">${p.opts.map((o, j) => `<button type="button" class="opt${j === i ? " on" : ""}" data-p="${p.id}" data-i="${j}">${o[0]}</button>`).join("")}</div>`
+      : p.opts.length ? `<div class="opts"><span class="opt on">${p.opts[0][0]}</span></div>` : "";
+    const price = p.soon
+      ? `<div class="price"><small>${t("priceOnRequest")}</small></div>`
+      : `<div class="price">${fmt(p.opts[i][1])} <small>${t("from")}</small></div>`;
+    return `<article class="card">
+      <div class="art">${ART[p.art]}</div>
+      <div class="badges"><span class="b${p.soon ? " soon" : ""}">${p.soon ? t("soon") : t("new")}</span></div>
+      <h3>${p.name}</h3>
+      ${opts}
+      ${price}
+      <button type="button" class="tg order" data-order="${p.id}">${p.soon ? t("notify") : t("order")}</button>
+    </article>`;
+  }).join("");
+}
+
+function renderStatic() {
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach((el) => {
+    const v = t(el.dataset.t);
+    if (typeof v === "string") el.innerHTML = v;
+  });
+  $("#lang").textContent = lang === "en" ? "አማ" : "EN";
+  $("#q").placeholder = t("search");
+  $("#why").innerHTML = t("why").map(([h, p]) => `<div><h4>${h}</h4><p>${p}</p></div>`).join("");
+  $("#contacts").innerHTML = CONTACTS.map(([a, b, href]) => `<a href="${href}" target="_blank" rel="noopener">${a}<span>${b}</span></a>`).join("");
+  renderChips();
+  renderGrid();
+}
+
+["#tgHead", "#tgHero", "#tgFloat"].forEach((s) => ($(s).href = TG_URL));
+$("#lang").addEventListener("click", () => { lang = lang === "en" ? "am" : "en"; renderStatic(); });
+$("#q").addEventListener("input", (e) => { query = e.target.value; renderGrid(); });
+$("#chips").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-cat]");
+  if (!b) return;
+  cat = b.dataset.cat; renderChips(); renderGrid();
+});
+$("#grid").addEventListener("click", (e) => {
+  const o = e.target.closest("[data-p]");
+  if (o) { choice[o.dataset.p] = Number(o.dataset.i); renderGrid(); return; }
+  const btn = e.target.closest("[data-order]");
+  if (btn) order(PRODUCTS.find((p) => p.id === btn.dataset.order));
+});
+
+renderStatic();
+</script>
+</body>
+</html>

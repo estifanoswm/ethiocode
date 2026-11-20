@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#0b0b0f">
 <title>HEY Market | Website concept by EthioCode</title>
 <style>
-:root{--ink:#0b0b0f;--soft:#f4f4f6;--line:#e6e6ea;--muted:#6b6b76;--accent:#ff3b30;--tg:#229ed9;--ok:#16a34a}
+:root{--ink:#0b0b0f;--soft:#f4f4f6;--line:#e6e6ea;--muted:#6b6b76;--accent:#ff3b30;--tg:#229ed9;--ok:#16a34a;--ease:cubic-bezier(.22,.8,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Inter,"Noto Sans Ethiopic",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
@@ -16,27 +16,101 @@ a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:0 18px}
 .concept{background:#fff7d6;color:#5b4500;font-size:13px;text-align:center;padding:8px 14px}
-.concept b{font-weight:700}
-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+header{position:sticky;top:0;z-index:40;background:rgba(11,11,15,.82);backdrop-filter:blur(14px);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
 .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px;letter-spacing:-.02em}
 .logo span{background:var(--accent);color:#fff;border-radius:10px;padding:3px 9px;font-size:16px}
 .actions{display:flex;gap:8px;align-items:center}
-.pill{border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;font-weight:600}
+.pill{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 13px;font-size:14px;font-weight:600}
 .tg{display:inline-flex;align-items:center;gap:8px;background:var(--tg);color:#fff;border-radius:999px;padding:9px 16px;font-weight:700;font-size:14px}
 .tg svg{width:18px;height:18px;fill:currentColor}
-.hero{background:var(--ink);color:#fff;overflow:hidden;position:relative}
-.hero .wrap{display:grid;gap:28px;padding-top:46px;padding-bottom:46px}
-.tag{display:inline-block;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;letter-spacing:.04em}
-.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.05;letter-spacing:-.03em;margin-top:14px;max-width:720px}
-html[lang=am] .hero h1{line-height:1.3;letter-spacing:0}
-.hero p{color:#c9c9d1;font-size:18px;margin-top:14px;max-width:560px}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.ghost{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:9px 16px;font-weight:700;font-size:14px}
-.stats{display:flex;flex-wrap:wrap;gap:22px;margin-top:28px;color:#c9c9d1;font-size:14px}
-.stats b{display:block;color:#fff;font-size:22px}
-.glow{pointer-events:none;position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,59,48,.45),transparent 65%)}
-.tools{display:flex;flex-direction:column;gap:12px;padding:22px 0 8px}
+
+.tour{position:relative;height:calc(100svh - 58px);min-height:520px;background:#0b0b0f;overflow:hidden;user-select:none;-webkit-user-select:none}
+.scene{position:absolute;inset:0;perspective-origin:50% 50%;cursor:grab;touch-action:pan-y}
+.scene.drag{cursor:grabbing}
+.room{position:absolute;inset:0;transform-style:preserve-3d;pointer-events:none}
+.spot,.counter-card{pointer-events:auto}
+.face{position:absolute;left:50%;top:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.wall{width:var(--w);height:var(--h);margin:calc(var(--h)/-2) 0 0 calc(var(--w)/-2);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:7% 6% 0;overflow:hidden}
+.floor,.ceil{width:var(--w);height:var(--w);margin:calc(var(--w)/-2) 0 0 calc(var(--w)/-2)}
+.floor{background:radial-gradient(circle at 50% 50%,#3a3a44 0,#1d1d24 45%,#111116 75%);}
+.ceil{background:#18181e;background-image:linear-gradient(90deg,transparent 46%,rgba(255,255,255,.55) 49%,rgba(255,255,255,.55) 51%,transparent 54%),linear-gradient(0deg,transparent 46%,rgba(255,255,255,.35) 49%,rgba(255,255,255,.35) 51%,transparent 54%)}
+.w-apple{background:linear-gradient(180deg,#f7f5f0 0,#ebe7df 70%,#d9d3c7 100%);color:#1b1b1f}
+.w-play{background:radial-gradient(ellipse at 50% 30%,#1b3a8a 0,#0d1638 55%,#070a1c 100%);color:#fff}
+.w-counter{background:linear-gradient(180deg,#141418 0,#1e1e24 100%);color:#fff}
+.w-create{background:linear-gradient(180deg,#2a1d17 0,#3b2a20 60%,#2a1d17 100%);color:#fff}
+.wall h2{font-size:calc(var(--h)*.13);font-weight:800;letter-spacing:-.04em;line-height:1}
+.wall .sub{font-size:calc(var(--h)*.032);opacity:.7;margin-top:10px;text-align:center}
+.w-play h2{text-shadow:0 0 30px rgba(80,140,255,.9)}
+.neon{font-size:calc(var(--h)*.11);font-weight:800;letter-spacing:-.03em;color:#fff;text-shadow:0 0 6px #fff,0 0 22px var(--accent),0 0 48px var(--accent)}
+.neon small{display:block;font-size:.32em;letter-spacing:.2em;text-align:center;text-shadow:0 0 10px var(--accent);opacity:.9}
+.table{width:100%;display:flex;justify-content:space-around;align-items:flex-end;padding:0 3%;position:relative;height:46%}
+.table::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;border-radius:12px 12px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.25)}
+.w-apple .table::after{background:linear-gradient(180deg,#c9a47a,#a9825a)}
+.w-play .table::after{background:linear-gradient(180deg,#e9eef8,#b8c2d8)}
+.w-create .table::after{background:linear-gradient(180deg,#8b5e3c,#6a452b)}
+.w-counter .table::after{background:linear-gradient(180deg,#f2f2f5,#cfcfd6)}
+.spot{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:10%;transition:transform .35s var(--ease)}
+.spot:hover,.spot:focus-visible{transform:translateY(-8px)}
+.spot svg{height:calc(var(--h)*.24);filter:drop-shadow(0 18px 18px rgba(0,0,0,.35))}
+.tagp{background:rgba(255,255,255,.95);color:#111;border-radius:999px;padding:6px 12px;font-size:calc(var(--h)*.021);font-weight:700;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.18);display:flex;align-items:center;gap:6px}
+.tagp b{display:block;font-weight:600;color:var(--muted);font-size:.9em}
+.tagp{text-align:left;border-radius:14px}
+.tagp i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(255,59,48,.6);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(255,59,48,0)}100%{box-shadow:0 0 0 0 rgba(255,59,48,0)}}
+.counter-card{position:relative;z-index:1;margin-bottom:9%;background:#fff;color:#111;border-radius:22px;padding:22px 28px;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.counter-card b{font-size:calc(var(--h)*.03)}
+.counter-card span{font-size:calc(var(--h)*.02);color:var(--muted)}
+.poster{position:absolute;right:5%;top:7%;width:13%;aspect-ratio:3/4;border-radius:14px;background:linear-gradient(160deg,#ff3b30,#5b0d09);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;font-weight:800;font-size:calc(var(--h)*.024);box-shadow:0 20px 40px rgba(0,0,0,.35)}
+.narrow .poster{display:none}
+.narrow .wall .sub{font-size:calc(var(--h)*.026);max-width:78%;margin-left:auto;margin-right:auto}
+.poster small{font-weight:600;opacity:.8;font-size:.7em}
+
+.facade{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 120%,#2a2a33 0,#0b0b0f 60%);transition:transform 1.1s var(--ease),opacity .9s ease;transform-origin:50% 60%}
+.facade.open{transform:scale(2.4);opacity:0;pointer-events:none}
+.front{position:relative;width:min(560px,88vw);aspect-ratio:1.15;border-radius:22px 22px 0 0;background:linear-gradient(180deg,#1b1b21,#121217);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;padding-top:5%;box-shadow:0 40px 120px rgba(255,59,48,.18)}
+.sign{font-size:clamp(34px,8vw,64px)}
+.doors{position:absolute;left:12%;right:12%;bottom:0;height:62%;display:flex;gap:6px;perspective:800px}
+.door{flex:1;border-radius:10px 10px 0 0;background:linear-gradient(120deg,rgba(255,255,255,.16),rgba(255,255,255,.04) 40%,rgba(255,255,255,.1));border:1px solid rgba(255,255,255,.18);transition:transform 1s var(--ease);position:relative;overflow:hidden}
+.door::after{content:"";position:absolute;top:45%;width:4px;height:22%;border-radius:4px;background:rgba(255,255,255,.6)}
+.door.l::after{right:10px}.door.r::after{left:10px}
+.door .peek{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(255,220,180,.35),transparent 70%)}
+.facade.open .door.l{transform:translateX(-102%)}
+.facade.open .door.r{transform:translateX(102%)}
+.welcome{color:#fff;text-align:center;margin-top:26px;padding:0 18px}
+.welcome h1{font-size:clamp(28px,5.4vw,52px);letter-spacing:-.03em;line-height:1.08}
+html[lang=am] .welcome h1{letter-spacing:0;line-height:1.3}
+.welcome p{color:#b9b9c3;margin-top:10px;font-size:16px}
+.enter{margin-top:22px;display:inline-flex;align-items:center;gap:10px;background:#fff;color:#111;border-radius:999px;padding:13px 22px;font-weight:800;font-size:16px;box-shadow:0 10px 40px rgba(255,255,255,.18)}
+.skip{display:block;margin-top:14px;color:#9a9aa6;font-size:14px;text-decoration:underline;text-underline-offset:3px}
+
+.hud{position:absolute;left:0;right:0;bottom:18px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;opacity:0;transition:opacity .6s .5s}
+.inside .hud{opacity:1}
+.navs{pointer-events:auto;display:flex;gap:6px;background:rgba(20,20,26,.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:5px;max-width:94vw;overflow-x:auto;scrollbar-width:none}
+.navs::-webkit-scrollbar{display:none}
+.navs button{color:#cfcfd6;font-size:13px;font-weight:700;padding:8px 13px;border-radius:999px;white-space:nowrap}
+.navs button.on{background:#fff;color:#111}
+.hint{color:#cfcfd6;font-size:12px;background:rgba(20,20,26,.6);padding:5px 10px;border-radius:999px}
+.arrow{pointer-events:auto;position:absolute;top:50%;z-index:4;width:46px;height:46px;margin-top:-23px;border-radius:50%;background:rgba(255,255,255,.88);color:#111;font-size:22px;font-weight:800;display:grid;place-items:center;opacity:0;transition:opacity .6s .5s;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.inside .arrow{opacity:1}
+.arrow.lft{left:14px}.arrow.rgt{right:14px}
+.illus{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:4;color:#cfcfd6;font-size:12px;background:rgba(20,20,26,.6);padding:5px 10px;border-radius:999px;white-space:nowrap;opacity:0;transition:opacity .6s .6s}
+.inside .illus{opacity:1}
+
+.sheet-bg{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .3s}
+.sheet-bg.show{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:50%;bottom:0;z-index:61;width:min(460px,100vw);transform:translate(-50%,105%);transition:transform .45s var(--ease);background:#fff;border-radius:24px 24px 0 0;padding:22px 20px 28px;box-shadow:0 -20px 60px rgba(0,0,0,.25)}
+.sheet.show{transform:translate(-50%,0)}
+.sheet .grab{width:40px;height:5px;border-radius:5px;background:#ddd;margin:0 auto 14px}
+.sheet .art{height:150px}
+.sheet h3{font-size:22px;margin-top:12px}
+.sheet .close{position:absolute;right:14px;top:12px;width:34px;height:34px;border-radius:50%;background:var(--soft);font-size:18px}
+.sheet .opts{margin-top:10px}
+.sheet .price{margin-top:12px}
+.sheet .tg{margin-top:14px;width:100%;justify-content:center;padding:13px}
+
+.tools{display:flex;flex-direction:column;gap:12px;padding:30px 0 8px}
+.h2{font-size:clamp(24px,4vw,34px);letter-spacing:-.02em;padding-top:44px}
 .search{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 15px;font:inherit;font-size:16px;background:var(--soft);outline:none}
 .search:focus{border-color:var(--ink);background:#fff}
 .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
@@ -60,11 +134,10 @@ html[lang=am] .hero h1{line-height:1.3;letter-spacing:0}
 .order{justify-content:center;width:100%}
 .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0}
 section.alt{background:var(--soft)}
-.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;padding:44px 0}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;padding:30px 0 44px}
 .why div{background:#fff;border-radius:18px;padding:20px;border:1px solid var(--line)}
 .why h4{font-size:16px}
 .why p{color:var(--muted);font-size:14px;margin-top:6px}
-.h2{font-size:clamp(24px,4vw,34px);letter-spacing:-.02em;padding-top:44px}
 .visit{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));padding:20px 0 50px}
 .box{border:1px solid var(--line);border-radius:20px;padding:22px}
 .box p{color:var(--muted);margin-top:6px}
@@ -72,49 +145,91 @@ section.alt{background:var(--soft)}
 .contacts{display:flex;flex-direction:column;gap:8px;margin-top:10px}
 .contacts a{display:flex;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-weight:600}
 .contacts span{color:var(--muted);font-weight:500}
-footer{background:var(--ink);color:#c9c9d1;font-size:13px;padding:26px 0 90px}
+footer{background:var(--ink);color:#c9c9d1;font-size:13px;padding:26px 0}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
-footer b{color:#fff}
-.float{position:fixed;right:16px;bottom:16px;z-index:30;width:58px;height:58px;border-radius:50%;background:var(--tg);display:grid;place-items:center;box-shadow:0 10px 30px rgba(34,158,217,.45)}
-.float svg{width:28px;height:28px;fill:#fff}
-.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw;text-align:center}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:70;background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw;text-align:center}
 .toast.show{opacity:1}
-@media(min-width:760px){.grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}.card{padding:16px}.art{height:150px}.art svg{height:110px}.tools{flex-direction:row;align-items:center}.search{max-width:340px}.float{display:none}footer{padding-bottom:26px}}
+@media(min-width:760px){.tools{flex-direction:row;align-items:center}.search{max-width:340px}.grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}.card{padding:16px}.art{height:150px}.art svg{height:110px}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}
 </style>
 </head>
 <body>
 <div class="concept" data-t="concept"></div>
 <header>
   <div class="wrap bar">
-    <a href="#" class="logo">HEY <span>Market</span></a>
+    <a href="#tour" class="logo">HEY <span>Market</span></a>
     <div class="actions">
       <button class="pill" id="lang" type="button"></button>
-      <a class="tg" id="tgHead" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.94 4.3 18.7 19.6c-.24 1.08-.88 1.35-1.78.84l-4.93-3.63-2.38 2.29c-.26.26-.48.48-.99.48l.35-5.02 9.14-8.26c.4-.35-.09-.55-.62-.2L6.2 13.2 1.33 11.68c-1.06-.33-1.08-1.06.22-1.57L20.6 2.77c.88-.32 1.65.21 1.34 1.53Z"/></svg><span data-t="tgShort"></span></a>
+      <a class="tg tglink" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.94 4.3 18.7 19.6c-.24 1.08-.88 1.35-1.78.84l-4.93-3.63-2.38 2.29c-.26.26-.48.48-.99.48l.35-5.02 9.14-8.26c.4-.35-.09-.55-.62-.2L6.2 13.2 1.33 11.68c-1.06-.33-1.08-1.06.22-1.57L20.6 2.77c.88-.32 1.65.21 1.34 1.53Z"/></svg><span data-t="tgShort"></span></a>
     </div>
   </div>
 </header>
 
-<section class="hero">
-  <div class="glow"></div>
-  <div class="wrap">
-    <div>
-      <span class="tag">#ORIGINALONLY</span>
-      <h1 data-t="heroTitle"></h1>
-      <p data-t="heroSub"></p>
-      <div class="ctas">
-        <a class="tg" id="tgHero" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.94 4.3 18.7 19.6c-.24 1.08-.88 1.35-1.78.84l-4.93-3.63-2.38 2.29c-.26.26-.48.48-.99.48l.35-5.02 9.14-8.26c.4-.35-.09-.55-.62-.2L6.2 13.2 1.33 11.68c-1.06-.33-1.08-1.06.22-1.57L20.6 2.77c.88-.32 1.65.21 1.34 1.53Z"/></svg><span data-t="tgLong"></span></a>
-        <a class="ghost" href="#shop" data-t="browse"></a>
+<section class="tour" id="tour">
+  <div class="scene" id="scene">
+    <div class="room" id="room">
+      <div class="face wall w-apple" data-wall="0">
+        <div><h2>iPhone</h2><p class="sub" data-t="wApple"></p></div>
+        <div class="table">
+          <button class="spot" data-id="ip16" type="button"></button>
+          <button class="spot" data-id="ip17" type="button"></button>
+          <button class="spot" data-id="ip18pm" type="button"></button>
+        </div>
       </div>
-      <div class="stats">
-        <div><b>16.6K</b><span data-t="statTg"></span></div>
-        <div><b>Bole</b><span data-t="statStore"></span></div>
-        <div><b>100%</b><span data-t="statOriginal"></span></div>
+      <div class="face wall w-play" data-wall="1">
+        <div><h2>PLAY</h2><p class="sub" data-t="wPlay"></p></div>
+        <div class="table">
+          <button class="spot" data-id="ps5s" type="button"></button>
+          <button class="spot" data-id="ps5p" type="button"></button>
+        </div>
       </div>
+      <div class="face wall w-counter" data-wall="2">
+        <div class="neon">HEY<small>#ORIGINALONLY</small></div>
+        <div class="table">
+          <div class="counter-card">
+            <b data-t="counterTitle"></b>
+            <span data-t="counterSub"></span>
+            <a class="tg tglink" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.94 4.3 18.7 19.6c-.24 1.08-.88 1.35-1.78.84l-4.93-3.63-2.38 2.29c-.26.26-.48.48-.99.48l.35-5.02 9.14-8.26c.4-.35-.09-.55-.62-.2L6.2 13.2 1.33 11.68c-1.06-.33-1.08-1.06.22-1.57L20.6 2.77c.88-.32 1.65.21 1.34 1.53Z"/></svg><span data-t="tgLong"></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="face wall w-create" data-wall="3">
+        <div><h2 data-t="wCreateTitle"></h2><p class="sub" data-t="wCreate"></p></div>
+        <div class="poster">iPhone 18 Pro<small data-t="soon"></small></div>
+        <div class="table">
+          <button class="spot" data-id="lark" type="button"></button>
+          <button class="spot" data-id="djim" type="button"></button>
+        </div>
+      </div>
+      <div class="face floor" id="floor"></div>
+      <div class="face ceil" id="ceil"></div>
     </div>
+  </div>
+
+  <div class="facade" id="facade">
+    <div class="front">
+      <div class="neon sign">HEY<small>MARKET</small></div>
+      <div class="doors"><div class="door l"><div class="peek"></div></div><div class="door r"><div class="peek"></div></div></div>
+    </div>
+    <div class="welcome">
+      <h1 data-t="welcome"></h1>
+      <p data-t="welcomeSub"></p>
+      <button class="enter" id="enter" type="button"><span data-t="enter"></span> →</button>
+      <a class="skip" href="#shop" data-t="skip"></a>
+    </div>
+  </div>
+
+  <div class="illus" data-t="illus"></div>
+  <button class="arrow lft" id="prev" type="button" aria-label="Turn left">‹</button>
+  <button class="arrow rgt" id="next" type="button" aria-label="Turn right">›</button>
+  <div class="hud">
+    <div class="navs" id="navs"></div>
+    <div class="hint" data-t="hint"></div>
   </div>
 </section>
 
 <main class="wrap" id="shop">
+  <h2 class="h2" data-t="allProducts"></h2>
   <div class="tools">
     <input class="search" id="q" type="search" autocomplete="off">
     <div class="chips" id="chips"></div>
@@ -154,24 +269,32 @@ footer b{color:#fff}
   </div>
 </footer>
 
-<a class="float" id="tgFloat" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.94 4.3 18.7 19.6c-.24 1.08-.88 1.35-1.78.84l-4.93-3.63-2.38 2.29c-.26.26-.48.48-.99.48l.35-5.02 9.14-8.26c.4-.35-.09-.55-.62-.2L6.2 13.2 1.33 11.68c-1.06-.33-1.08-1.06.22-1.57L20.6 2.77c.88-.32 1.65.21 1.34 1.53Z"/></svg></a>
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
 <div class="toast" id="toast"></div>
 
 <script>
-const TG = "heymobile";
-const TG_URL = "https://t.me/" + TG;
+const TG_URL = "https://t.me/heymobile";
 
 const T = {
   en: {
     concept: "<b>Website concept</b> prepared for HEY Market by EthioCode. Not the official site.",
     tgShort: "Telegram",
     tgLong: "Order on Telegram",
-    heroTitle: "Original phones, gaming and creator gear in Addis.",
-    heroSub: "Live prices in birr, updated daily. Pick your model, then order in one tap on Telegram or visit our store in Bole Medhanialem.",
-    browse: "Browse products",
-    statTg: "Telegram subscribers",
-    statStore: "Store you can visit",
-    statOriginal: "Original only",
+    welcome: "Welcome to HEY Market.",
+    welcomeSub: "Original phones, gaming and creator gear. Bole Medhanialem, Addis Ababa.",
+    enter: "Step inside",
+    skip: "Skip to products",
+    illus: "Illustrated store. Real 360° photos of the shop go here.",
+    hint: "Drag or swipe to look around. Tap a product.",
+    wApple: "The latest iPhones, original only.",
+    wPlay: "PlayStation 5 Slim and Pro, disc and digital.",
+    wCreateTitle: "CREATE",
+    wCreate: "Wireless mics for creators and vloggers.",
+    counterTitle: "Order in one tap",
+    counterSub: "Message us and we reserve it for you.",
+    walls: ["iPhone", "Gaming", "Counter", "Creators"],
+    allProducts: "All products",
     search: "Search iPhone, PS5, mic…",
     updated: "Prices from HEY Online Market's Telegram channel, November 2026. Final price confirmed on Telegram.",
     cats: { all: "All", phones: "Phones", gaming: "Gaming", creator: "Creator gear", soon: "Coming soon" },
@@ -201,12 +324,20 @@ const T = {
     concept: "ይህ ለHEY Market በEthioCode የተዘጋጀ <b>የድረ-ገጽ ናሙና</b> ነው። ኦፊሴላዊ ድረ-ገጽ አይደለም።",
     tgShort: "ቴሌግራም",
     tgLong: "በቴሌግራም ይዘዙ",
-    heroTitle: "ኦሪጅናል ስልኮች፣ ጌሚንግ እና የይዘት ፈጣሪ እቃዎች በአዲስ አበባ።",
-    heroSub: "በየቀኑ የሚታደሱ ዋጋዎች በብር። ሞዴልዎን ይምረጡ፣ በቴሌግራም በአንድ ንክኪ ይዘዙ ወይም ቦሌ መድኃኔዓለም የሚገኘውን ሱቃችንን ይጎብኙ።",
-    browse: "ምርቶችን ይመልከቱ",
-    statTg: "የቴሌግራም ተከታዮች",
-    statStore: "የሚጎበኝ ሱቅ",
-    statOriginal: "ኦሪጅናል ብቻ",
+    welcome: "እንኳን ወደ HEY Market በደህና መጡ።",
+    welcomeSub: "ኦሪጅናል ስልኮች፣ ጌሚንግ እና የይዘት ፈጣሪ እቃዎች። ቦሌ መድኃኔዓለም፣ አዲስ አበባ።",
+    enter: "ይግቡ",
+    skip: "በቀጥታ ወደ ምርቶች",
+    illus: "የተሳለ ሱቅ። እውነተኛ የ360° የሱቁ ፎቶዎች እዚህ ይገባሉ።",
+    hint: "ዙሪያውን ለማየት ይጎትቱ። ምርት ይንኩ።",
+    wApple: "አዳዲስ iPhoneዎች፣ ኦሪጅናል ብቻ።",
+    wPlay: "PlayStation 5 Slim እና Pro፣ በዲስክ እና በዲጂታል።",
+    wCreateTitle: "CREATE",
+    wCreate: "ለይዘት ፈጣሪዎች የሚሆኑ ገመድ አልባ ማይኮች።",
+    counterTitle: "በአንድ ንክኪ ይዘዙ",
+    counterSub: "መልዕክት ይላኩልን፣ እናስይዝልዎታለን።",
+    walls: ["iPhone", "ጌሚንግ", "ካውንተር", "ፈጣሪዎች"],
+    allProducts: "ሁሉም ምርቶች",
     search: "iPhone፣ PS5፣ ማይክ ይፈልጉ…",
     updated: "ዋጋዎቹ ከHEY Online Market የቴሌግራም ቻናል የተወሰዱ ናቸው (ኅዳር 2019)። የመጨረሻ ዋጋ በቴሌግራም ይረጋገጣል።",
     cats: { all: "ሁሉም", phones: "ስልኮች", gaming: "ጌሚንግ", creator: "የይዘት ፈጣሪ እቃዎች", soon: "በቅርቡ" },
@@ -252,8 +383,8 @@ const CONTACTS = [
 ];
 
 const ART = {
-  phone: '<svg viewBox="0 0 60 110"><rect x="4" y="2" width="52" height="106" rx="12" fill="#1c1c22"/><rect x="8" y="6" width="44" height="98" rx="9" fill="#2e2e38"/><rect x="22" y="9" width="16" height="5" rx="2.5" fill="#0b0b0f"/><circle cx="16" cy="22" r="5" fill="#3d3d49"/><rect x="8" y="60" width="44" height="44" rx="0" fill="url(#g)"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3b30" stop-opacity=".35"/><stop offset="1" stop-color="#229ed9" stop-opacity=".35"/></linearGradient></defs></svg>',
-  console: '<svg viewBox="0 0 120 110"><path d="M38 6h22v98H38c-8 0-14-6-14-14V20c0-8 6-14 14-14z" fill="#f1f1f4" stroke="#d7d7de" stroke-width="2"/><rect x="58" y="10" width="14" height="90" rx="4" fill="#1c1c22"/><path d="M70 6h12c8 0 14 6 14 14v70c0 8-6 14-14 14H70z" fill="#f1f1f4" stroke="#d7d7de" stroke-width="2"/><rect x="62" y="40" width="6" height="2" rx="1" fill="#229ed9"/></svg>',
+  phone: '<svg viewBox="0 0 60 110"><defs><linearGradient id="gp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3b30" stop-opacity=".55"/><stop offset="1" stop-color="#229ed9" stop-opacity=".55"/></linearGradient></defs><rect x="4" y="2" width="52" height="106" rx="12" fill="#1c1c22"/><rect x="8" y="6" width="44" height="98" rx="9" fill="#2e2e38"/><rect x="8" y="6" width="44" height="98" rx="9" fill="url(#gp)"/><rect x="22" y="10" width="16" height="5" rx="2.5" fill="#0b0b0f"/></svg>',
+  console: '<svg viewBox="0 0 120 110"><path d="M38 6h22v98H38c-8 0-14-6-14-14V20c0-8 6-14 14-14z" fill="#f6f6f8" stroke="#d7d7de" stroke-width="2"/><rect x="58" y="10" width="14" height="90" rx="4" fill="#1c1c22"/><path d="M70 6h12c8 0 14 6 14 14v70c0 8-6 14-14 14H70z" fill="#f6f6f8" stroke="#d7d7de" stroke-width="2"/><rect x="62" y="40" width="6" height="2" rx="1" fill="#229ed9"/></svg>',
   mic: '<svg viewBox="0 0 120 110"><rect x="18" y="22" width="34" height="46" rx="10" fill="#1c1c22"/><circle cx="35" cy="38" r="8" fill="#3d3d49"/><rect x="68" y="22" width="34" height="46" rx="10" fill="#1c1c22"/><circle cx="85" cy="38" r="8" fill="#3d3d49"/><rect x="30" y="78" width="60" height="22" rx="8" fill="#e5e5ea"/><rect x="40" y="86" width="40" height="6" rx="3" fill="#c7c7cf"/></svg>'
 };
 
@@ -261,18 +392,21 @@ let lang = "en", cat = "all", query = "";
 const choice = {};
 const $ = (s) => document.querySelector(s);
 const fmt = (n) => n.toLocaleString("en-US");
+const t = (k) => T[lang][k];
+const byId = (id) => PRODUCTS.find((p) => p.id === id);
 
-function t(k) { return T[lang][k]; }
+function priceLabel(p) {
+  return p.soon ? t("priceOnRequest") : `${fmt(p.opts[choice[p.id] || 0][1])} ${t("from")}`;
+}
 
 function orderText(p) {
-  const o = p.opts[choice[p.id] || 0];
   if (p.soon) return `Hi HEY Market, please notify me when the ${p.name} arrives.`;
+  const o = p.opts[choice[p.id] || 0];
   return `Hi HEY Market, I want to order: ${p.name} ${o[0]} (${fmt(o[1])} ETB). Is it available?`;
 }
 
 async function order(p) {
-  const text = orderText(p);
-  try { await navigator.clipboard.writeText(text); toast(t("copied")); } catch (e) {}
+  try { await navigator.clipboard.writeText(orderText(p)); toast(t("copied")); } catch (e) {}
   window.open(TG_URL, "_blank", "noopener");
 }
 
@@ -284,65 +418,175 @@ function toast(msg) {
   toast.h = setTimeout(() => el.classList.remove("show"), 2600);
 }
 
+function optsHtml(p, i) {
+  if (p.opts.length > 1) return `<div class="opts">${p.opts.map((o, j) => `<button type="button" class="opt${j === i ? " on" : ""}" data-p="${p.id}" data-i="${j}">${o[0]}</button>`).join("")}</div>`;
+  if (p.opts.length) return `<div class="opts"><span class="opt on">${p.opts[0][0]}</span></div>`;
+  return "";
+}
+
+function cardInner(p) {
+  const i = choice[p.id] || 0;
+  const price = p.soon ? `<div class="price"><small>${t("priceOnRequest")}</small></div>` : `<div class="price">${fmt(p.opts[i][1])} <small>${t("from")}</small></div>`;
+  return `<div class="art">${ART[p.art]}</div>
+    <div class="badges"><span class="b${p.soon ? " soon" : ""}">${p.soon ? t("soon") : t("new")}</span></div>
+    <h3>${p.name}</h3>${optsHtml(p, i)}${price}
+    <button type="button" class="tg order" data-order="${p.id}">${p.soon ? t("notify") : t("order")}</button>`;
+}
+
+let sheetId = null;
+function openSheet(id) {
+  sheetId = id;
+  $("#sheet").innerHTML = `<div class="grab"></div><button class="close" type="button" data-close>✕</button>${cardInner(byId(id))}`;
+  $("#sheet").classList.add("show");
+  $("#sheetBg").classList.add("show");
+}
+function closeSheet() {
+  sheetId = null;
+  $("#sheet").classList.remove("show");
+  $("#sheetBg").classList.remove("show");
+}
+
+function renderSpots() {
+  document.querySelectorAll(".spot").forEach((el) => {
+    const p = byId(el.dataset.id);
+    el.innerHTML = `${ART[p.art]}<span class="tagp"><i></i><span>${p.name}<b>${priceLabel(p)}</b></span></span>`;
+  });
+}
+
 function renderChips() {
-  $("#chips").innerHTML = Object.entries(t("cats"))
-    .map(([k, v]) => `<button type="button" class="chip${k === cat ? " on" : ""}" data-cat="${k}">${v}</button>`)
-    .join("");
+  $("#chips").innerHTML = Object.entries(t("cats")).map(([k, v]) => `<button type="button" class="chip${k === cat ? " on" : ""}" data-cat="${k}">${v}</button>`).join("");
 }
 
 function renderGrid() {
   const q = query.trim().toLowerCase();
   const list = PRODUCTS.filter((p) => (cat === "all" || p.cat === cat) && (!q || p.name.toLowerCase().includes(q)));
-  if (!list.length) { $("#grid").innerHTML = `<p class="empty">${t("empty")}</p>`; return; }
-  $("#grid").innerHTML = list.map((p) => {
-    const i = choice[p.id] || 0;
-    const opts = p.opts.length > 1
-      ? `<div class="opts">${p.opts.map((o, j) => `<button type="button" class="opt${j === i ? " on" : ""}" data-p="${p.id}" data-i="${j}">${o[0]}</button>`).join("")}</div>`
-      : p.opts.length ? `<div class="opts"><span class="opt on">${p.opts[0][0]}</span></div>` : "";
-    const price = p.soon
-      ? `<div class="price"><small>${t("priceOnRequest")}</small></div>`
-      : `<div class="price">${fmt(p.opts[i][1])} <small>${t("from")}</small></div>`;
-    return `<article class="card">
-      <div class="art">${ART[p.art]}</div>
-      <div class="badges"><span class="b${p.soon ? " soon" : ""}">${p.soon ? t("soon") : t("new")}</span></div>
-      <h3>${p.name}</h3>
-      ${opts}
-      ${price}
-      <button type="button" class="tg order" data-order="${p.id}">${p.soon ? t("notify") : t("order")}</button>
-    </article>`;
-  }).join("");
+  $("#grid").innerHTML = list.length ? list.map((p) => `<article class="card">${cardInner(p)}</article>`).join("") : `<p class="empty">${t("empty")}</p>`;
 }
 
-function renderStatic() {
+function renderNavs() {
+  $("#navs").innerHTML = t("walls").map((w, i) => `<button type="button" data-go="${i}" class="${i === currentWall() ? "on" : ""}">${w}</button>`).join("");
+}
+
+function renderAll() {
   document.documentElement.lang = lang;
-  document.querySelectorAll("[data-t]").forEach((el) => {
-    const v = t(el.dataset.t);
-    if (typeof v === "string") el.innerHTML = v;
-  });
+  document.querySelectorAll("[data-t]").forEach((el) => { const v = t(el.dataset.t); if (typeof v === "string") el.innerHTML = v; });
   $("#lang").textContent = lang === "en" ? "አማ" : "EN";
   $("#q").placeholder = t("search");
   $("#why").innerHTML = t("why").map(([h, p]) => `<div><h4>${h}</h4><p>${p}</p></div>`).join("");
   $("#contacts").innerHTML = CONTACTS.map(([a, b, href]) => `<a href="${href}" target="_blank" rel="noopener">${a}<span>${b}</span></a>`).join("");
-  renderChips();
-  renderGrid();
+  renderSpots(); renderChips(); renderGrid(); renderNavs();
+  if (sheetId) openSheet(sheetId);
 }
 
-["#tgHead", "#tgHero", "#tgFloat"].forEach((s) => ($(s).href = TG_URL));
-$("#lang").addEventListener("click", () => { lang = lang === "en" ? "am" : "en"; renderStatic(); });
-$("#q").addEventListener("input", (e) => { query = e.target.value; renderGrid(); });
-$("#chips").addEventListener("click", (e) => {
-  const b = e.target.closest("[data-cat]");
-  if (!b) return;
-  cat = b.dataset.cat; renderChips(); renderGrid();
+const scene = $("#scene"), room = $("#room"), tour = $("#tour");
+let W = 1400, H = 760, persp = 800, yaw = 0, target = null, vel = 0, auto = true, dragging = false, lastX = 0, moved = 0;
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function layout() {
+  const vw = tour.clientWidth, vh = tour.clientHeight;
+  const narrow = vw < 700;
+  room.classList.toggle("narrow", narrow);
+  W = narrow ? 760 : 1400;
+  H = narrow ? 1100 : 760;
+  persp = (W / 2) * (vh / H) * (narrow ? 0.78 : 0.74);
+  room.style.setProperty("--w", W + "px");
+  room.style.setProperty("--h", H + "px");
+  scene.style.perspective = persp + "px";
+  document.querySelectorAll(".wall").forEach((el) => {
+    el.style.transform = `rotateY(${el.dataset.wall * -90}deg) translateZ(${-W / 2}px)`;
+  });
+  $("#floor").style.transform = `translateY(${H / 2}px) rotateX(90deg)`;
+  $("#ceil").style.transform = `translateY(${-H / 2}px) rotateX(-90deg)`;
+  apply();
+}
+
+function apply() {
+  room.style.transform = `translateZ(${persp - 2}px) rotateY(${yaw}deg)`;
+}
+
+function currentWall() {
+  return ((Math.round(yaw / 90) % 4) + 4) % 4;
+}
+
+function goWall(i) {
+  auto = false;
+  const base = Math.round(yaw / 360) * 360;
+  let best = null;
+  for (const k of [-360, 0, 360]) {
+    const a = base + k + i * 90;
+    if (best === null || Math.abs(a - yaw) < Math.abs(best - yaw)) best = a;
+  }
+  target = best;
+}
+
+let lastWall = -1;
+function tick() {
+  if (!dragging) {
+    if (target !== null) {
+      yaw += (target - yaw) * 0.09;
+      if (Math.abs(target - yaw) < 0.05) { yaw = target; target = null; }
+    } else if (Math.abs(vel) > 0.01) {
+      yaw += vel; vel *= 0.93;
+    } else if (auto && !reduced && tour.classList.contains("inside")) {
+      yaw += 0.06;
+    }
+  }
+  apply();
+  const w = currentWall();
+  if (w !== lastWall) { lastWall = w; document.querySelectorAll("#navs button").forEach((b, i) => b.classList.toggle("on", i === w)); }
+  requestAnimationFrame(tick);
+}
+
+scene.addEventListener("pointerdown", (e) => {
+  if (!tour.classList.contains("inside")) return;
+  dragging = true; auto = false; target = null; vel = 0; moved = 0; lastX = e.clientX;
+  scene.classList.add("drag");
 });
-$("#grid").addEventListener("click", (e) => {
-  const o = e.target.closest("[data-p]");
-  if (o) { choice[o.dataset.p] = Number(o.dataset.i); renderGrid(); return; }
-  const btn = e.target.closest("[data-order]");
-  if (btn) order(PRODUCTS.find((p) => p.id === btn.dataset.order));
+addEventListener("pointermove", (e) => {
+  if (!dragging) return;
+  const dx = e.clientX - lastX;
+  lastX = e.clientX; moved += Math.abs(dx);
+  const d = dx * (90 / (tour.clientWidth * 0.9));
+  yaw += d; vel = d;
+});
+addEventListener("pointerup", () => { dragging = false; scene.classList.remove("drag"); });
+scene.addEventListener("click", (e) => {
+  const s = e.target.closest(".spot");
+  if (s && moved < 8) openSheet(s.dataset.id);
 });
 
-renderStatic();
+$("#enter").addEventListener("click", () => {
+  $("#facade").classList.add("open");
+  tour.classList.add("inside");
+});
+$("#prev").addEventListener("click", () => goWall((currentWall() + 3) % 4));
+$("#next").addEventListener("click", () => goWall((currentWall() + 1) % 4));
+$("#navs").addEventListener("click", (e) => { const b = e.target.closest("[data-go]"); if (b) goWall(Number(b.dataset.go)); });
+addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeSheet();
+  if (!tour.classList.contains("inside")) return;
+  if (e.key === "ArrowLeft") goWall((currentWall() + 3) % 4);
+  if (e.key === "ArrowRight") goWall((currentWall() + 1) % 4);
+});
+
+$("#sheetBg").addEventListener("click", closeSheet);
+document.addEventListener("click", (e) => {
+  if (e.target.closest("[data-close]")) { closeSheet(); return; }
+  const o = e.target.closest("[data-p]");
+  if (o) { choice[o.dataset.p] = Number(o.dataset.i); renderGrid(); renderSpots(); if (sheetId) openSheet(sheetId); return; }
+  const b = e.target.closest("[data-order]");
+  if (b) order(byId(b.dataset.order));
+  const c = e.target.closest("[data-cat]");
+  if (c) { cat = c.dataset.cat; renderChips(); renderGrid(); }
+});
+$("#q").addEventListener("input", (e) => { query = e.target.value; renderGrid(); });
+$("#lang").addEventListener("click", () => { lang = lang === "en" ? "am" : "en"; renderAll(); });
+document.querySelectorAll(".tglink").forEach((a) => (a.href = TG_URL));
+addEventListener("resize", layout);
+
+renderAll();
+layout();
+requestAnimationFrame(tick);
 </script>
 </body>
 </html>
